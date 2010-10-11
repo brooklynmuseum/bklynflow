@@ -1,0 +1,35 @@
+BklynFlow is a Coverflow-like class for MooTools.
+Brooklyn Museum, September 2010
+
+
+Very simple usage example:
+
+---
+
+var thumbs = [
+	{
+		action: function() {
+			loadArtist('Evelyne_Axell);
+		},
+		image: 'thumbs/axell.jpg',
+		caption: 'Evelyne Axell'
+	},
+	{
+		action: function() {
+			loadArtist('Pauline_Boty');
+		},
+		image: 'thumbs/boty.jpg',
+		caption: 'Pauline Boty'
+	},
+	{
+		action: function() {
+			loadArtist('Vija_Celmins');
+		},
+		image: 'thumbs/celmins.jpg',
+		caption: 'Vija Celmins'
+	}
+];
+
+var myBklynFlow = new BklynFlow(thumbs, 'wikipop-navigation');
+
+---
