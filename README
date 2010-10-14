@@ -1,15 +1,16 @@
 BklynFlow is a Coverflow-like class for MooTools.
-Brooklyn Museum, September 2010
-
+Beau Sievers at the Brooklyn Museum, September 2010
 
 Very simple usage example:
 
 ---
 
+include('bklynflow.js');
+
 var thumbs = [
 	{
 		action: function() {
-			loadArtist('Evelyne_Axell);
+			loadArtist('Evelyne_Axell);			// Replace with any desired action
 		},
 		image: 'thumbs/axell.jpg',
 		caption: 'Evelyne Axell'
@@ -30,6 +31,6 @@ var thumbs = [
 	}
 ];
 
-var myBklynFlow = new BklynFlow(thumbs, 'wikipop-navigation');
+var myBklynFlow = new BklynFlow(thumbs, 'my-flow-element-id');
 
 ---
