@@ -10,7 +10,7 @@ include('bklynflow.js');
 var thumbs = [
 	{
 		action: function() {
-			loadArtist('Evelyne_Axell);			// Replace with any desired action
+			loadArtist('Evelyne_Axell');			// Replace with any desired action
 		},
 		image: 'thumbs/axell.jpg',
 		caption: 'Evelyne Axell'
