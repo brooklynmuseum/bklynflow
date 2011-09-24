@@ -8,27 +8,27 @@ Very simple usage example:
 include('bklynflow.js');
 
 var thumbs = [
-	{
-		action: function() {
-			loadArtist('Evelyne_Axell');			// Replace with any desired action
-		},
-		image: 'thumbs/axell.jpg',
-		caption: 'Evelyne Axell'
-	},
-	{
-		action: function() {
-			loadArtist('Pauline_Boty');
-		},
-		image: 'thumbs/boty.jpg',
-		caption: 'Pauline Boty'
-	},
-	{
-		action: function() {
-			loadArtist('Vija_Celmins');
-		},
-		image: 'thumbs/celmins.jpg',
-		caption: 'Vija Celmins'
-	}
+  {
+    action: function() {
+      loadArtist('Evelyne_Axell');      // Replace with any desired action
+    },
+    image: 'thumbs/axell.jpg',
+    caption: 'Evelyne Axell'
+  },
+  {
+    action: function() {
+      loadArtist('Pauline_Boty');
+    },
+    image: 'thumbs/boty.jpg',
+    caption: 'Pauline Boty'
+  },
+  {
+    action: function() {
+      loadArtist('Vija_Celmins');
+    },
+    image: 'thumbs/celmins.jpg',
+    caption: 'Vija Celmins'
+  }
 ];
 
 var myBklynFlow = new BklynFlow(thumbs, 'my-flow-element-id');
