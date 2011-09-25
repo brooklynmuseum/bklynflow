@@ -47,7 +47,10 @@ var BklynFlow = new Class({
       });
       newCell.setStyles({
         '-webkit-perspective': '500',
-        float: 'left'
+        '-moz-perspective': '500',
+        '-o-perspective': '500',
+        'perspective': '500',
+        'float': 'left'
       })
       var imageElement = new Element('img', {
         'src': thumb.image,
@@ -62,7 +65,14 @@ var BklynFlow = new Class({
       innerWrapper.setStyles({
         'text-align': 'center',
         '-webkit-transition-property': '-webkit-transform',
-        '-webkit-transition-duration': self.transitionTime
+        '-webkit-transition-duration': self.transitionTime,
+        // moz/opera/w3c
+        '-moz-transition-property': '-moz-transform',
+        '-moz-transition-duration': self.transitionTime,
+        '-o-transition-property': '-o-transform',
+        '-o-transition-duration': self.transitionTime,
+        'transition-property': 'transform',
+        'transition-duration': self.transitionTime
       });
       innerWrapper.adopt(imageElement);
       innerWrapper.appendText(thumb.caption);
@@ -95,7 +105,16 @@ var BklynFlow = new Class({
       position: 'relative', 
       '-webkit-transition-property': '-webkit-transform',
       '-webkit-transition-duration': this.transitionTime,
-      '-webkit-transition-timing-function': 'ease-out'
+      '-webkit-transition-timing-function': 'ease-out',
+      '-moz-transition-property': '-moz-transform',
+      '-moz-transition-duration': this.transitionTime,
+      '-moz-transition-timing-function': 'ease-out', // maybe works?
+      '-o-transition-property': '-o-transform',
+      '-o-transition-duration': this.transitionTime,
+      '-o-transition-timing-function': 'ease-out',
+      'transition-property': 'transform',
+      'transition-duration': this.transitionTime,
+      'transition-timing-function': 'ease-out'
     });
 
     this.parentDiv.adopt(frame);
@@ -161,7 +180,10 @@ var BklynFlow = new Class({
     this.touchstartX = pageX;
     this.touchDelta = 0;
     this.frame.setStyles({
-      '-webkit-transition-duration': '0s'
+      '-webkit-transition-duration': '0s',
+      '-moz-transition-duration': '0s',
+      '-o-transition-duration': '0s',
+      'transition-duration': '0s'
     });
   },
   
@@ -174,7 +196,10 @@ var BklynFlow = new Class({
     var centeredCellIndex = this.getIndexForOffset(newOffset);
     this.highlightCell(centeredCellIndex);
     this.frame.setStyles({
-      '-webkit-transform': 'translate3d(' + newOffset + 'px,0,0)'
+      '-webkit-transform': 'translate3d(' + newOffset + 'px,0,0)',
+      '-moz-transform': 'translate3d(' + newOffset + 'px,0,0)',
+      '-o-transform': 'translate3d(' + newOffset + 'px,0,0)',
+      'transform': 'translate3d(' + newOffset + 'px,0,0)'
     });
   },
   
@@ -189,7 +214,10 @@ var BklynFlow = new Class({
           this.thumbs[this.index].action(this.index);
         } else {
           this.frame.setStyles({
-            '-webkit-transition-duration': this.transitionTime
+            '-webkit-transition-duration': this.transitionTime,
+            '-moz-transition-duration': this.transitionTime,
+            '-o-transition-duration': this.transitionTime,
+            'transition-duration': this.transitionTime
           });
           this.select(tapIndex);
           if(this.tapToSelectTriggersAction) {
@@ -208,7 +236,10 @@ var BklynFlow = new Class({
     }
     
     this.frame.setStyles({
-      '-webkit-transition-duration': this.transitionTime
+      '-webkit-transition-duration': this.transitionTime,
+      '-moz-transition-duration': this.transitionTime,
+      '-o-transition-duration': this.transitionTime,
+      'transition-duration': this.transitionTime
     });
   },
   
@@ -288,13 +319,31 @@ var BklynFlow = new Class({
     this.innerWrappers.each(function(innerWrapper, i) {
       var image = self.images[i];
       if(i < index) {
-        innerWrapper.setStyle('-webkit-transform', 'translate3d(0,0,' + self.zOffset + ') rotateY(' + self.rotationValue + ')');
+        //innerWrapper.setStyle('-webkit-transform', 'translate3d(0,0,' + self.zOffset + ') rotateY(' + self.rotationValue + ')');
+        innerWrapper.setStyles({
+          '-webkit-transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(' + self.rotationValue + ')',
+          '-moz-transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(' + self.rotationValue + ')',
+          '-o-transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(' + self.rotationValue + ')',
+          'transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(' + self.rotationValue + ')'
+        });
       }
       if(i == index) {
-        innerWrapper.setStyle('-webkit-transform', 'translate3d(0,0,0) rotateY(0deg)');
+        //innerWrapper.setStyle('-webkit-transform', 'translate3d(0,0,0) rotateY(0deg)');
+        innerWrapper.setStyles({
+          '-webkit-transform': 'translate3d(0,0,0) rotateY(0deg)',
+          '-moz-transform': 'translate3d(0,0,0) rotateY(0deg)',
+          '-o-transform': 'translate3d(0,0,0) rotateY(0deg)',
+          'transform': 'translate3d(0,0,0) rotateY(0deg)'
+        });
       }
       if(i > index) {
-        innerWrapper.setStyle('-webkit-transform', 'translate3d(0,0,' + self.zOffset + ') rotateY(-' + self.rotationValue + ')');
+        //innerWrapper.setStyle('-webkit-transform', 'translate3d(0,0,' + self.zOffset + ') rotateY(-' + self.rotationValue + ')');
+        innerWrapper.setStyles({
+          '-webkit-transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(-' + self.rotationValue + ')',
+          '-moz-transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(-' + self.rotationValue + ')',
+          '-o-transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(-' + self.rotationValue + ')',
+          'transform': 'translate3d(0,0,' + self.zOffset + ') rotateY(-' + self.rotationValue + ')'
+        });
       }
     });
   },
@@ -305,7 +354,10 @@ var BklynFlow = new Class({
     var offset = (0.5*(parentSize.x - this.cellWidths[newIndex])) - widthOfPreviousImages;
     this.currentXOffset = offset;
     this.frame.setStyles({
-      '-webkit-transform': 'translate3d(' + offset +'px,0,0)'
+      '-webkit-transform': 'translate3d(' + offset +'px,0,0)',
+      '-moz-transform': 'translate3d(' + offset +'px,0,0)',
+      '-o-transform': 'translate3d(' + offset +'px,0,0)',
+      'transform': 'translate3d(' + offset +'px,0,0)'
     });
   },
   
