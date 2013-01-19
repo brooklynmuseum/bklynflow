@@ -1,6 +1,12 @@
+// chk is gone as of Mootools 1.3, but this makes it still work ~ .dh
+window.$chk = function(obj){
+  return !!(obj || obj === 0);
+};
+
 var BklynFlow = new Class({
   
-  initialize: function(thumbs, parentId) {    
+  initialize: function(thumbs, parentId) {
+    
     // Sensible defaults
     this.frameClass = 'flow-frame';
     this.imageClass = 'flow-image';
